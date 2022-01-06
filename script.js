@@ -32,6 +32,8 @@ function setInput() {
   for (let i = 0; i < form_input.length; i++) {
     let input = form_input[i];
     let input_type = input.getAttribute("type");
+    if(input_type=='hidden')
+      continue;
     if (input_type === 'email') {
       input.value = demo_email;
       continue;
@@ -45,7 +47,22 @@ function setInput() {
       setPassword(input);
       continue;
     }
+    if (input_type == 'url') {
+      input.value = window.location.href;
+      continue;
+    }
+    if (input_type == 'tel') {
+      input.value = "09876543210";
+      continue;
+    }
+    let inputmode = input.getAttribute("inputmode");
+    if (inputmode == 'decimal') {
+      input.value = "1000013";
+      continue;
+    }
+    
     input.value = demo_text;
+    
   }
 }
 function setCheckbox(input) {
@@ -64,7 +81,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 var demo_email = 'mailform@example.com';
-var demo_text = 'CONTENT_HERE';
-var demo_pass = 'paswordhere';
+var demo_text = 'ベトナムから送信機能テスト';
+var demo_pass = 'abc134679';
 autoComplete();
 })()
