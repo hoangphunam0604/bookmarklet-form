@@ -1,7 +1,7 @@
 javascript: (() => {
 function autoComplete() {
-  setInput();
   setSelect();
+  setInput();
   setTextArea();
 };
 
@@ -34,16 +34,17 @@ function setInput() {
     let input_type = input.getAttribute("type");
     if(input_type=='hidden')
       continue;
-    if (input_type === 'email') {
-      input.value = demo_email;
-      continue;
-    }
+      
     if (input_type == 'checkbox' || input_type == 'radio') {
       setCheckbox(input);
       continue;
     }
 
     if(input.value){
+      continue;
+    }
+    if (input_type === 'email') {
+      input.value = demo_email;
       continue;
     }
     if (input_type == 'password') {
