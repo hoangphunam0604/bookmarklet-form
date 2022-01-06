@@ -1,8 +1,8 @@
 javascript: (() => {
 function autoComplete() {
+  setInput();
   setSelect();
   setTextArea();
-  setInput();
 };
 
 
