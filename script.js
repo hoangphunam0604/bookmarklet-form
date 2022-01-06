@@ -31,6 +31,8 @@ function setInput() {
   var form_input = document.getElementsByTagName('input');
   for (let i = 0; i < form_input.length; i++) {
     let input = form_input[i];
+    if(input.value)
+      continue;
     let input_type = input.getAttribute("type");
     if(input_type=='hidden')
       continue;
@@ -80,8 +82,8 @@ function setPassword(input) {
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-var demo_email = 'mailform@example.com';
 var demo_text = 'ベトナムから送信機能テスト';
 var demo_pass = 'abc134679';
+var demo_email = 'mailform@example.com';
 autoComplete();
 })()
