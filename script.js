@@ -31,8 +31,6 @@ function setInput() {
   var form_input = document.getElementsByTagName('input');
   for (let i = 0; i < form_input.length; i++) {
     let input = form_input[i];
-    if(input.value)
-      continue;
     let input_type = input.getAttribute("type");
     if(input_type=='hidden')
       continue;
@@ -45,8 +43,20 @@ function setInput() {
       continue;
     }
 
+    if(input.value){
+      continue;
+    }
     if (input_type == 'password') {
       setPassword(input);
+      continue;
+    }
+    
+    if (input_type == 'date') {
+      setDate(input);
+      continue;
+    }
+    if (input_type == 'datetime-local') {
+      setDateTime(input);
       continue;
     }
     if (input_type == 'url') {
@@ -76,6 +86,23 @@ function setCheckbox(input) {
     input_checkbox[random_checkbox].checked = true;
   }
 }
+
+function setDate(input) {
+  input.value = new Date().toISOString().split('T')[0];
+}
+
+function setDateTime(input) {
+  var dt = new Date();
+
+  const value = `${
+    dt.getFullYear().toString().padStart(4, '0')}-${
+    (dt.getMonth()+1).toString().padStart(2, '0')}-${
+    dt.getDate().toString().padStart(2, '0')}T${
+    dt.getHours().toString().padStart(2, '0')}:${
+    dt.getMinutes().toString().padStart(2, '0')}`;
+  input.value = value;
+}
+
 function setPassword(input) {
   input.value = demo_pass;
 }
