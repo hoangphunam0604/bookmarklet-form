@@ -19,6 +19,10 @@ javascript: (() => {
               }, 'html');
           }
           alertCustomer(res.message);
+          var lastid = parseInt(localStorage.getItem("lastid"));
+          if(!lastid) lastid = 16
+          lastid++;
+          localStorage.setItem('lastid',lastid)
           document.location = $(".islogin-gameleft a").attr('href');
       }, 'json');
     }
