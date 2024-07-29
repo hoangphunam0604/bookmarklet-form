@@ -1,0 +1,31 @@
+{
+  "name": "Auto CACK",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "favicon.ico"
+  },
+  "content_scripts":[
+    {
+      "matches": ["https://id.gosu.vn/Account/Access*"],
+      "js": ["login.js"],  
+      "all_frames": false,
+      "match_origin_as_fallback": false,
+      "match_about_blank": false,
+      "run_at": "document_idle",
+      "world": "ISOLATED"
+    },
+    {
+      "matches": ["https://cuuam.gosu.vn/home/su-kien/sinh-nhat-11-tuoi.htm"],
+      "js": ["event.js"],
+      "exclude_globs": ["*bar*"],     
+      "all_frames": false,
+      "match_origin_as_fallback": false,
+      "match_about_blank": false,
+      "run_at": "document_idle",
+      "world": "ISOLATED"
+    }
+  ]
+}
