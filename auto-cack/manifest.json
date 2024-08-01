@@ -3,10 +3,9 @@
   "description": "Base Level Extension",
   "version": "1.0",
   "manifest_version": 3,
-  "action": {
-    "default_popup": "index.html",
-    "default_icon": "favicon.ico"
-  },
+  "permissions": [
+    "storage"
+  ],
   "content_scripts":[
     {
       "matches": ["https://id.gosu.vn/Account/Access*"],
@@ -19,8 +18,7 @@
     },
     {
       "matches": ["https://cuuam.gosu.vn/home/su-kien/sinh-nhat-11-tuoi.htm"],
-      "js": ["event.js"],
-      "exclude_globs": ["*bar*"],     
+      "js": ["libs/jquery.js","event.js"],
       "all_frames": false,
       "match_origin_as_fallback": false,
       "match_about_blank": false,
